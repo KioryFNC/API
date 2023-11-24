@@ -1,4 +1,6 @@
 require("express-async-errors")
+require("dotenv/config")
+
 
 const migrationsRun = require("./database/sqlite/migrations")
 const AppError = require("./utils/AppError");
@@ -38,6 +40,6 @@ app.use(( error, request, response, next) => {
 });
 
 
-const PORT = 3333; // definindo numero da porta que a api vai ficar esperando requisições e devolver as respostas
+const PORT = process.env.PORT || 3333; // definindo numero da porta que a api vai ficar esperando requisições e devolver as respostas
 
 app.listen(PORT, () => console.log(`Server is running on Port ${PORT}`)); // fique escutando(listen) e quando a aplicação iniciar execute a função do console.log
